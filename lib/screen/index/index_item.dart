@@ -61,18 +61,19 @@ class _RecipeItemState extends State<IndexItem> {
                   child: Text('${model.title}-${DateTime.now().second}')),
             ),
             Positioned(
-                child: Selector(
-                  builder: (BuildContext context, value, Widget? child) =>
+                child: Selector<AppRecipeModel, bool>(
+                  builder: (BuildContext context, favourite, Widget? child) =>
                       IconButton(
                     icon: Icon(Icons.favorite,
-                        color: model.favourite ? Colors.red : Colors.white),
+                        color: favourite ? Colors.red : Colors.white),
                     onPressed: () {
-                      model.favourite = !model.favourite;
+                      model.favourite = !favourite;
                       context.read<AppRecipeModel>().toggle(model);
                     },
                   ),
                   selector: (context, AppRecipeModel appRecipeModel) =>
-                      appRecipeModel.indexRecipeModelList[index].favourite,
+                      appRecipeModel.indexRecipeModelList[index]
+                          .favourite, //当favourite发生改变的时候会rebuild Selector的builder函数
                 ),
                 right: 10.0,
                 top: 10.0)

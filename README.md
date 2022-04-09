@@ -1,16 +1,18 @@
-# fluro
+# provider状态管理+fluro路由封装
 
-A new Flutter project.
+provider状态管理+fluro路由封装
+<img src="https://raw.githubusercontent.com/wuxinxi/flutter_status_router_manager
+/master/screen/satus_manager.gif" width="460" height="768"/> <br/>
+
+<img src="https://raw.githubusercontent.com/wuxinxi/flutter_status_router_manager
+/master/screen/fluro_router.gif" width="460" height="768"/> <br/>
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+provider状态管理相关文章
+- [Flutter-状态管理-provider-ChangeNotifierProvider的用法](https://blog.csdn.net/wu996489865/article/details/123947642)
+- [Flutter状态管理-多页面收藏同步](https://blog.csdn.net/wu996489865/article/details/124068768)
 
-A few resources to get you started if this is your first Flutter project:
+fluro路由封装相关文章
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
