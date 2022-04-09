@@ -2,11 +2,9 @@
 
 provider状态管理+fluro路由封装
 
-<img src="https://raw.githubusercontent.com/wuxinxi/flutter_status_router_manager
-/master/screen/satus_manager.gif" width="460" height="768"/>
+![](./screen/satus_manager.gif)
 
-<img src="https://raw.githubusercontent.com/wuxinxi/flutter_status_router_manager
-/master/screen/fluro_router.gif" width="460" height="768"/> 
+![](./screen/fluro_router.gif)
 
 ## Getting Started
 
