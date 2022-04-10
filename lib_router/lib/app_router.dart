@@ -20,6 +20,7 @@ class AppRouter extends FluroRouter {
       bool maintainState = true,
       bool rootNavigator = false,
       RedirectInterceptor? interceptor,
+      String? name,
       Bundle? bundle,
       TransitionType? transition,
       Duration? transitionDuration,
@@ -30,7 +31,7 @@ class AppRouter extends FluroRouter {
     }
     if (bundle != null) {
       routeSettings =
-          RouteSettings(arguments: bundle, name: routeSettings?.name);
+          RouteSettings(arguments: bundle, name: name ?? routeSettings?.name);
     }
     return super.navigateTo(context, path,
         replace: replace,
