@@ -48,7 +48,7 @@ class _RecipeItemState extends State<IndexItem> {
       child: InkWell(
         onTap: () {
           log('${DateTime.now()} _item>>(_RecipeItemState:48)>>${model.hashCode}');
-          AppRouter.appRouter.navigateTo(context, AppPagePath.detail,
+          AppRouter.navigateTo(context, AppPagePath.detail,
               bundle: Bundle()..put('detail', model));
         },
         child: Container(

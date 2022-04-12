@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => AppLoginStatusModel())
       ],
       child: MaterialApp(
-        onGenerateRoute: AppRouter.appRouter.generator,
+        onGenerateRoute: AppRouter.generator,
       ),
     );
   }

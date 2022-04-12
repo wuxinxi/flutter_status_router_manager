@@ -24,13 +24,13 @@ class SettingExternalMessage extends StatelessWidget {
                 title: '返回至上一级',
                 subTitle: '返回至上一级消息设置页面',
                 itemBean: SettingItemBean(isArrow: true),
-                onPressed: () => AppRouter.appRouter.pop(context)),
+                onPressed: () => AppRouter.pop(context)),
             const Divider(),
             SettingItem(
                 title: '返回至首页',
                 subTitle: '返回至首页设置页tab',
                 itemBean: SettingItemBean(isArrow: true),
-                onPressed: () => AppRouter.appRouter.popToHome(context)),
+                onPressed: () => AppRouter.popToHome(context)),
             const Divider(),
             SettingItem(
                 title: '返回至首页',
@@ -38,7 +38,7 @@ class SettingExternalMessage extends StatelessWidget {
                 itemBean: SettingItemBean(isArrow: true),
                 onPressed: () {
                   context.read<AppTabModel>().curIndex = 0;
-                  AppRouter.appRouter.popToHome(context);
+                  AppRouter.popToHome(context);
                 }),
             const Divider()
           ],

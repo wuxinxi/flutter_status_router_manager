@@ -8,9 +8,7 @@ import 'package:lib_router/redirect_interceptor.dart';
 /// @author: TangRen
 /// @remark:
 ///
-class AppRouter extends FluroRouter {
-  static final appRouter = AppRouter();
-
+class _AppRouter extends FluroRouter {
   ///bundle and routeSettings only one
   ///Both can use bundle.=>>routeSettings.arguments=bundle
   @override
@@ -30,8 +28,7 @@ class AppRouter extends FluroRouter {
       return interceptor!.navigateTo(context);
     }
     if (bundle != null) {
-      routeSettings =
-          RouteSettings(arguments: bundle, name: name ?? routeSettings?.name);
+      routeSettings = RouteSettings(arguments: bundle, name: name ?? path);
     }
     return super.navigateTo(context, path,
         replace: replace,
@@ -65,3 +62,5 @@ class AppRouter extends FluroRouter {
     return Navigator.canPop(context);
   }
 }
+
+final AppRouter = _AppRouter();

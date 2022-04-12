@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           barrierDismissible: false);
                       await Future.delayed(const Duration(seconds: 1));
                       AppManager.getInstance().setLogin(context, true);
-                      AppRouter.appRouter
+                      AppRouter
                         ..pop(context)
                         ..pop(context);
                     },

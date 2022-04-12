@@ -9,7 +9,7 @@ import 'package:lib_router/app_router.dart';
 class ApplicationRouter {
   static setupRouter() {
     pageHandler.forEach((path, handler) {
-      AppRouter.appRouter.define(path, handler: handler);
+      AppRouter.define(path, handler: handler);
     });
   }
 }

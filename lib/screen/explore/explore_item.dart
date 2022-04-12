@@ -44,7 +44,7 @@ class _RecipeItemState extends State<ExploreItem> {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: InkWell(
-        onTap: () => AppRouter.appRouter.navigateTo(context, AppPagePath.detail,
+        onTap: () => AppRouter.navigateTo(context, AppPagePath.detail,
             bundle: Bundle()..put('detail', model)),
         child: Container(
           height: 300.0,

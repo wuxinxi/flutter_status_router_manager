@@ -24,8 +24,8 @@ class SettingMessage extends StatelessWidget {
             SettingItem(
                 title: '外部消息设置',
                 itemBean: SettingItemBean(isArrow: true),
-                onPressed: () => AppRouter.appRouter
-                    .navigateTo(context, AppPagePath.settingMessageExternal)),
+                onPressed: () => AppRouter.navigateTo(
+                    context, AppPagePath.settingMessageExternal)),
             const Divider(),
             SettingItem(
               title: '内部消息设置',

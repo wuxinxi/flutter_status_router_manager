@@ -12,7 +12,7 @@ import 'package:lib_router/redirect_interceptor.dart';
 class LoginInterceptor extends RedirectInterceptor {
   @override
   Future navigateTo(BuildContext context) {
-    return AppRouter.appRouter.navigateTo(context, AppPagePath.login);
+    return AppRouter.navigateTo(context, AppPagePath.login);
   }
 
   @override

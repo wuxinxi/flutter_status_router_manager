@@ -54,7 +54,7 @@ class SettingScreen extends StatelessWidget {
             SettingItem(
               title: '消息设置',
               itemBean: SettingItemBean(isArrow: true),
-              onPressed: () => AppRouter.appRouter.navigateTo(
+              onPressed: () => AppRouter.navigateTo(
                   context, AppPagePath.settingMessage,
                   interceptor: LoginInterceptor()),
             ),
@@ -73,8 +73,7 @@ class SettingScreen extends StatelessWidget {
                         if (statusModel.login) {
                           AppManager.getInstance().setLogin(context, false);
                         } else {
-                          AppRouter.appRouter
-                              .navigateTo(context, AppPagePath.login);
+                          AppRouter.navigateTo(context, AppPagePath.login);
                         }
                       },
                     )),
