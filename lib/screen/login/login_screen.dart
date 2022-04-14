@@ -3,9 +3,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lib_router/app_router.dart';
+import 'package:provider/provider.dart';
 
-import '../../utils/app_manager.dart';
+import '../../model/app_login_status_model.dart';
+import '../../utils/app_constants.dart';
 import '../../utils/font_utils.dart';
+import '../../utils/sp_utils.dart';
 import 'widget_user_text_field.dart';
 
 ///
@@ -77,7 +80,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           builder: (_) => loading,
                           barrierDismissible: false);
                       await Future.delayed(const Duration(seconds: 1));
-                      AppManager.getInstance().setLogin(context, true);
+                      SpUtils.setBool(AppConstants.spKeyLogin, true);
+                      context.read<AppLoginStatusModel>().login = true;
                       AppRouter
                         ..pop(context)
                         ..pop(context);

@@ -33,9 +33,13 @@ dependencies:
     sdk: flutter
   lib_router:
     path: lib_router
+
+  lib_net:
+    path: lib_net
   provider: ^6.0.2
   shared_preferences: ^2.0.13
   flutter_screenutil: ^5.3.1
+  flutter_easyrefresh: ^2.2.1
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2

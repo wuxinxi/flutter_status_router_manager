@@ -4,7 +4,11 @@
 /// @remark:
 ///
 class AppPagePath {
-  static const String home = '/';
+  static const String splash = '/';
+
+  static const String guide = '/guide';
+
+  static const String home = '/home';
 
   static const String index = '/index';
 

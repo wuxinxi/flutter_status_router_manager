@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 /// @remark:
 ///
 abstract class RedirectInterceptor {
-  bool needRedirect();
+  Future<bool> needRedirect();
 
   Future navigateTo(BuildContext context);
 }

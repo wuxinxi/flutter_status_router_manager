@@ -2,18 +2,16 @@ import 'package:fluroDemo/model/app_login_status_model.dart';
 import 'package:fluroDemo/model/app_recipe_model.dart';
 import 'package:fluroDemo/model/app_tab_model.dart';
 import 'package:fluroDemo/router/application_router.dart';
-import 'package:fluroDemo/utils/app_constants.dart';
-import 'package:fluroDemo/utils/app_manager.dart';
-import 'package:fluroDemo/utils/sp_utils.dart';
+import 'package:fluroDemo/utils/app_config.dart';
 import 'package:flutter/material.dart';
+import 'package:lib_net/core/network_config.dart';
 import 'package:lib_router/app_router.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ApplicationRouter.setupRouter();
-  AppManager.getInstance().isLogin =
-      await SpUtils.getBool(AppConstants.spKeyLogin);
+  AppNetConfig.getInstance().initConfig(AppConfig());
   runApp(const MyApp());
 }
 

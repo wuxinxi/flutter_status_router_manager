@@ -1,13 +1,14 @@
 import 'package:fluroDemo/router/config/app_page_path.dart';
 import 'package:fluroDemo/router/interceptor/login_interceptor.dart';
 import 'package:fluroDemo/screen/setting/setting_item.dart';
-import 'package:fluroDemo/utils/app_manager.dart';
+import 'package:fluroDemo/utils/sp_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lib_router/app_router.dart';
 import 'package:provider/provider.dart';
 
 import '../../model/app_login_status_model.dart';
+import '../../utils/app_constants.dart';
 
 ///
 /// @date: 2022/4/8 23:01
@@ -64,6 +65,12 @@ class SettingScreen extends StatelessWidget {
               itemBean: SettingItemBean(isArrow: true),
             ),
             const Divider(),
+            SettingItem(
+              title: '跳过Guide',
+              subTitle: '开启后，进入程序将跳过Guide page',
+              itemBean: SettingItemBean(key: AppConstants.spSkipGuide),
+            ),
+            const Divider(),
             Consumer(
                 builder: (context, AppLoginStatusModel statusModel, child) =>
                     SettingItem(
@@ -71,7 +78,8 @@ class SettingScreen extends StatelessWidget {
                       itemBean: SettingItemBean(isArrow: true),
                       onPressed: () {
                         if (statusModel.login) {
-                          AppManager.getInstance().setLogin(context, false);
+                          SpUtils.setBool(AppConstants.spKeyLogin, false);
+                          context.read<AppLoginStatusModel>().login = false;
                         } else {
                           AppRouter.navigateTo(context, AppPagePath.login);
                         }

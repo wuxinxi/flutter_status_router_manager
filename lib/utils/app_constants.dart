@@ -5,4 +5,6 @@
 ///
 class AppConstants {
   static const String spKeyLogin = 'login';
+
+  static const String spSkipGuide = 'skipGuide';
 }

@@ -23,8 +23,8 @@ class _AppRouter extends FluroRouter {
       TransitionType? transition,
       Duration? transitionDuration,
       RouteTransitionsBuilder? transitionBuilder,
-      RouteSettings? routeSettings}) {
-    if (interceptor?.needRedirect() ?? false) {
+      RouteSettings? routeSettings}) async {
+    if (await interceptor?.needRedirect() ?? false) {
       return interceptor!.navigateTo(context);
     }
     if (bundle != null) {

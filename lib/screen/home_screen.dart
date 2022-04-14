@@ -1,4 +1,5 @@
 import 'package:fluroDemo/model/app_tab_model.dart';
+import 'package:fluroDemo/screen/article/article_screen.dart';
 import 'package:fluroDemo/screen/explore/explore_screen.dart';
 import 'package:fluroDemo/screen/index/index_screen.dart';
 import 'package:fluroDemo/screen/setting/setting_screen.dart';
@@ -19,7 +20,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Widget> pages = const [IndexScreen(), ExploreScreen(), SettingScreen()];
+  List<Widget> pages = const [
+    IndexScreen(),
+    ExploreScreen(),
+    ArticleScreen(),
+    SettingScreen()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 BottomNavigationBar(
                   showUnselectedLabels: false,
                   showSelectedLabels: false,
+                  type: BottomNavigationBarType.fixed,
                   currentIndex: model.curIndex,
                   onTap: (index) => model.curIndex = index,
                   items: const [
@@ -43,6 +50,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         icon: Icon(Icons.home_mini), label: ''),
                     BottomNavigationBarItem(
                         icon: Icon(Icons.explore), label: ''),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.article), label: ''),
                     BottomNavigationBarItem(
                         icon: Icon(Icons.settings), label: ''),
                   ],

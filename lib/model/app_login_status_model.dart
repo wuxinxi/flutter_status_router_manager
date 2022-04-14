@@ -1,4 +1,5 @@
-import 'package:fluroDemo/utils/app_manager.dart';
+import 'package:fluroDemo/utils/app_constants.dart';
+import 'package:fluroDemo/utils/sp_utils.dart';
 import 'package:flutter/material.dart';
 
 ///
@@ -17,6 +18,6 @@ class AppLoginStatusModel extends ChangeNotifier {
   }
 
   AppLoginStatusModel() {
-    _login = AppManager.getInstance().isLogin;
+    SpUtils.getBool(AppConstants.spKeyLogin).then((value) => login = value);
   }
 }
