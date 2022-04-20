@@ -14,6 +14,8 @@ class AppPagePath {
 
   static const String favourite = '/favourite';
 
+  static const String article = '/article';
+
   static const String setting = '/setting';
 
   static const String detail = '/detail';

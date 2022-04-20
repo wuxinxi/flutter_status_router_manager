@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:fluroDemo/model/recipe_model.dart';
 import 'package:flutter/material.dart';
-import 'package:lib_router/app_bundle.dart';
 import 'package:provider/provider.dart';
 
 import '../../model/app_recipe_model.dart';
@@ -13,16 +10,18 @@ import '../../model/app_recipe_model.dart';
 /// @remark:
 ///
 class DetailScreen extends StatelessWidget {
-  const DetailScreen({Key? key}) : super(key: key);
+  final RecipeModel? recipeModel;
+
+  const DetailScreen({Key? key, required this.recipeModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var arguments = ModalRoute.of(context)?.settings.arguments;
-    RecipeModel? recipeModel;
-    if (arguments != null && arguments is Bundle) {
-      recipeModel = arguments.get<RecipeModel>('detail');
-      log('${DateTime.now()} build>>(DetailScreen:22)>>${recipeModel.hashCode}');
-    }
+    // var arguments = ModalRoute.of(context)?.settings.arguments;
+    // RecipeModel? recipeModel;
+    // if (arguments != null && arguments is Bundle) {
+    //   recipeModel = arguments.get<RecipeModel>('detail');
+    //   log('${DateTime.now()} build>>(DetailScreen:22)>>${recipeModel.hashCode}');
+    // }
     return Scaffold(
       appBar: AppBar(
           title: Text(recipeModel?.title ?? 'Detail'),

@@ -25,7 +25,7 @@ class _IndexScreenState extends State<IndexScreen> {
 
   @override
   void dispose() {
-    context.read<AppRecipeModel>().indexRecipeModelList.clear();
+    // context.read<AppRecipeModel>().indexRecipeModelList.clear();
     super.dispose();
   }
 

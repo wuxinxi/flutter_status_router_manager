@@ -24,8 +24,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  var userNameController = TextEditingController();
-  var userPwdController = TextEditingController();
+  final userNameController = TextEditingController();
+  final userNameFocusNode = FocusNode();
+  final userPwdController = TextEditingController();
+  final userPwdFocusNode = FocusNode();
   final loading = const LoadingDialog();
 
   late TapGestureRecognizer _gestureRecognizer;
@@ -57,6 +59,13 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: userNameController,
               hintText: "Email Address",
               icon: Icon(Icons.email, size: 24.h),
+              textInputAction: TextInputAction.next,
+              autofocus: true,
+              onSubmitted: (value) {
+                userNameFocusNode
+                  ..unfocus()
+                  ..requestFocus(userPwdFocusNode);
+              },
             ),
             UserTextField(
               controller: userPwdController,
@@ -64,6 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
               obscureText: true,
               icon: Icon(Icons.lock, size: 24.h),
               suffixIcon: true,
+              textInputAction: TextInputAction.done,
             ),
             Container(
                 height: 56.0.h,
@@ -80,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           builder: (_) => loading,
                           barrierDismissible: false);
                       await Future.delayed(const Duration(seconds: 1));
-                      SpUtils.setBool(AppConstants.spKeyLogin, true);
+                      SpUtils.setBool(AppConstants.spKeyLogin, false);
                       context.read<AppLoginStatusModel>().login = true;
                       AppRouter
                         ..pop(context)

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fluroDemo/model/article/article_index_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
@@ -19,13 +21,14 @@ class _ArticleScreenState extends State<ArticleScreen> {
   late EasyRefreshController _easyRefreshController;
   final List<Datas> _items = [];
   int page = 0;
+  bool loadFinished = false;
 
   Future<bool> refresh() async {
     page = 0;
     return onRequest(
         page,
         (dataList) => _items
-          ..clear
+          ..clear()
           ..addAll(dataList));
   }
 
@@ -37,15 +40,16 @@ class _ArticleScreenState extends State<ArticleScreen> {
     ArticleIndexList res = await FHttp.getInstance().request(
         ArticleIndexList(), '/article/list/$page/json', onSuccess: (indexList) {
       onSuccess.call(indexList.datas ?? []);
-      setState(() {});
     });
+    loadFinished = true;
+    setState(() {});
     return res.code == 0;
   }
 
   @override
   void initState() {
     super.initState();
-    refresh();
+    // refresh();
     _easyRefreshController = EasyRefreshController();
   }
 
@@ -55,14 +59,31 @@ class _ArticleScreenState extends State<ArticleScreen> {
     super.dispose();
   }
 
+  placeholderWidget() {
+    return loadFinished && _items.isEmpty
+        ? Center(
+            child: TextButton(
+                child: const Text('Retry'),
+                onPressed: () => _easyRefreshController.callRefresh()))
+        : null;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          body: EasyRefresh.custom(
+    log('build~');
+    return Scaffold(
+        body: SafeArea(
+      child: EasyRefresh.custom(
         controller: _easyRefreshController,
         enableControlFinishLoad: true,
         enableControlFinishRefresh: true,
+        firstRefresh: true,
+        //刷新时也可以加载更多
+        taskIndependence: true,
+        firstRefreshWidget: const Center(
+          child: CircularProgressIndicator(),
+        ),
+        emptyWidget: placeholderWidget(),
         slivers: [
           SliverList(
               delegate: SliverChildBuilderDelegate(
@@ -78,7 +99,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
           bool res = await onLoad(page = page + 1);
           _easyRefreshController.finishLoad(success: res);
         },
-      )),
-    );
+      ),
+    ));
   }
 }

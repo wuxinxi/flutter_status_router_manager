@@ -1,11 +1,12 @@
 import 'package:fluroDemo/model/app_tab_model.dart';
-import 'package:fluroDemo/screen/article/article_screen.dart';
 import 'package:fluroDemo/screen/explore/explore_screen.dart';
 import 'package:fluroDemo/screen/index/index_screen.dart';
 import 'package:fluroDemo/screen/setting/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+
+import 'favourite/favourite_screen.dart';
 
 ///
 /// @date: 2022/4/8 15:28
@@ -23,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> pages = const [
     IndexScreen(),
     ExploreScreen(),
-    ArticleScreen(),
+    FavouriteScreen(),
     SettingScreen()
   ];
 
@@ -51,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     BottomNavigationBarItem(
                         icon: Icon(Icons.explore), label: ''),
                     BottomNavigationBarItem(
-                        icon: Icon(Icons.article), label: ''),
+                        icon: Icon(Icons.favorite), label: ''),
                     BottomNavigationBarItem(
                         icon: Icon(Icons.settings), label: ''),
                   ],

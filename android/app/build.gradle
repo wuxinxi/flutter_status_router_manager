@@ -25,6 +25,20 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
+def dartDefine = [
+        env: ''
+]
+
+if (project.hasProperty('dart-defines')) {
+    dartDefine = dartDefine + project.property('dart-defines')
+            .split(',')
+            .collectEntries { entry ->
+                def pair = new String(entry.decodeBase64(), 'UTF-8').split('=')
+                [(pair.first()): pair.last()]
+            }
+}
+
+
 android {
     compileSdkVersion flutter.compileSdkVersion
 
@@ -43,11 +57,12 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "cn.xxstudy.router.fluro"
+        applicationId "cn.xxstudy.router.fluro.${dartDefine.env}"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        resValue "string","app_name","${dartDefine.env}"
     }
 
     buildTypes {
@@ -57,6 +72,24 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            if (variant.buildType.name == "release") {
+                def versionName = variant.versionName
+                def versionCode = variant.versionCode
+                def newApkName = "app-v${versionName}-${versionCode}-${dartDefine.env}-${buildTime()}.apk"
+                outputFileName = new File(newApkName)
+            }
+        }
+    }
+}
+
+def buildTime() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMdd-HHmmss')
+    return formattedDate
 }
 
 flutter {
@@ -66,3 +99,4 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+

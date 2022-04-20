@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:lib_net/core/network_config.dart';
 
 import '../data/base_response.dart';
+import '../interceptor/log_interceptor.dart';
 import 'network_method.dart';
 
 class FHttp {
@@ -16,6 +17,7 @@ class FHttp {
   FHttp._() {
     BaseOptions options = _createBaseOption();
     _dio = Dio(options);
+    _dio.interceptors.add(LoggerInterceptor());
     // _dio.interceptors.add(CommonHeaderInterceptor());
     // _dio.interceptors.add(AppAuthorizationHeaderInterceptor());
     // _dio.interceptors.add(EncryptHeaderInterceptor());
@@ -89,3 +91,5 @@ class FHttp {
     }
   }
 }
+
+final Network = FHttp.getInstance();

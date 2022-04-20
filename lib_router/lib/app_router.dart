@@ -61,6 +61,8 @@ class _AppRouter extends FluroRouter {
   bool canPop(BuildContext context) {
     return Navigator.canPop(context);
   }
+
+  _AppRouter createNewAppRouter() => _AppRouter();
 }
 
 final AppRouter = _AppRouter();

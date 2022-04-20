@@ -25,7 +25,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
   @override
   void dispose() {
-    context.read<AppRecipeModel>().exploreRecipeModelList.clear();
+    // context.read<AppRecipeModel>().exploreRecipeModelList.clear();
     super.dispose();
   }
 

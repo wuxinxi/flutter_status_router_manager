@@ -2,9 +2,9 @@ import 'package:fluroDemo/router/config/app_page_path.dart';
 import 'package:fluroDemo/router/interceptor/login_interceptor.dart';
 import 'package:fluroDemo/screen/setting/setting_item.dart';
 import 'package:fluroDemo/utils/sp_utils.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lib_router/app_router.dart';
+import 'package:lib_router/env.dart';
 import 'package:provider/provider.dart';
 
 import '../../model/app_login_status_model.dart';
@@ -61,9 +61,10 @@ class SettingScreen extends StatelessWidget {
             ),
             const Divider(),
             SettingItem(
-              title: '我的收藏',
-              itemBean: SettingItemBean(isArrow: true),
-            ),
+                title: '博客',
+                itemBean: SettingItemBean(isArrow: true),
+                onPressed: () =>
+                    AppRouter.navigateTo(context, AppPagePath.article)),
             const Divider(),
             SettingItem(
               title: '跳过Guide',
@@ -78,7 +79,7 @@ class SettingScreen extends StatelessWidget {
                       itemBean: SettingItemBean(isArrow: true),
                       onPressed: () {
                         if (statusModel.login) {
-                          SpUtils.setBool(AppConstants.spKeyLogin, false);
+                          SpUtils.setBool(AppConstants.spKeyLogin, true);
                           context.read<AppLoginStatusModel>().login = false;
                         } else {
                           AppRouter.navigateTo(context, AppPagePath.login);
@@ -86,6 +87,16 @@ class SettingScreen extends StatelessWidget {
                       },
                     )),
             const Divider(),
+            ExpansionTile(
+              title: const Text('版本环境'),
+              expandedCrossAxisAlignment: CrossAxisAlignment.start,
+              expandedAlignment: Alignment.center,
+              children: [
+                Text('appName：${EnvManager.envConfig.appName}'),
+                Text('appId：${EnvManager.envConfig.appId}'),
+                Text('url：${EnvManager.envConfig.doMain}'),
+              ],
+            )
           ],
         ),
       ),

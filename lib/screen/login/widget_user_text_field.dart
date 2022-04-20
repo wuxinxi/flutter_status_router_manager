@@ -9,6 +9,10 @@ import '../../utils/font_utils.dart';
 ///
 class UserTextField extends StatefulWidget {
   final TextEditingController? controller;
+  final FocusNode? focusNode;
+  final TextInputAction? textInputAction;
+  final ValueChanged<String>? onSubmitted;
+  final bool? autofocus;
   final Widget? icon;
   final bool suffixIcon;
   final String? hintText;
@@ -17,6 +21,10 @@ class UserTextField extends StatefulWidget {
   const UserTextField(
       {Key? key,
       this.controller,
+      this.focusNode,
+      this.textInputAction,
+      this.onSubmitted,
+      this.autofocus,
       this.icon,
       this.suffixIcon = false,
       this.hintText,
@@ -47,6 +55,10 @@ class _UserTextFieldState extends State<UserTextField> {
       padding: const EdgeInsets.only(left: 20.0),
       child: TextField(
         controller: widget.controller,
+        focusNode: widget.focusNode,
+        textInputAction: widget.textInputAction,
+        onSubmitted: widget.onSubmitted,
+        autofocus: widget.autofocus ?? false,
         maxLines: 1,
         obscureText: obscureText,
         style: const TextStyle(
