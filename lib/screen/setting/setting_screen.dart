@@ -61,7 +61,7 @@ class SettingScreen extends StatelessWidget {
             ),
             const Divider(),
             SettingItem(
-                title: '博客',
+                title: '上拉加载下拉刷新',
                 itemBean: SettingItemBean(isArrow: true),
                 onPressed: () =>
                     AppRouter.navigateTo(context, AppPagePath.article)),
@@ -71,6 +71,12 @@ class SettingScreen extends StatelessWidget {
               subTitle: '开启后，进入程序将跳过Guide page',
               itemBean: SettingItemBean(key: AppConstants.spSkipGuide),
             ),
+            const Divider(),
+            SettingItem(
+                title: 'Share',
+                itemBean: SettingItemBean(isArrow: true),
+                onPressed: () =>
+                    AppRouter.navigateTo(context, AppPagePath.share)),
             const Divider(),
             Consumer(
                 builder: (context, AppLoginStatusModel statusModel, child) =>

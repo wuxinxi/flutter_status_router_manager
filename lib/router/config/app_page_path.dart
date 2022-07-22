@@ -23,5 +23,7 @@ class AppPagePath {
   static const String login = '/login';
 
   static const String settingMessage = '/message';
+  static const String settingStick = '/stick';
+  static const String share = '/share';
   static const String settingMessageExternal = '/message/external';
 }

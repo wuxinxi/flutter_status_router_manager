@@ -28,8 +28,10 @@ class SettingMessage extends StatelessWidget {
                     context, AppPagePath.settingMessageExternal)),
             const Divider(),
             SettingItem(
-              title: '内部消息设置',
+              title: '吸顶示例',
               itemBean: SettingItemBean(isArrow: true),
+              onPressed: () =>
+                  AppRouter.navigateTo(context, AppPagePath.settingStick),
             ),
             const Divider()
           ],

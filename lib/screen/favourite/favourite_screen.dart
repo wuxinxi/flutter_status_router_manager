@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 
@@ -40,12 +42,18 @@ class Page2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: const Text('嵌套的自页面')),
-        body: Center(
-            child: TextButton(
-                onPressed: () => AppRouter2.pop(context),
-                child: const Text('返回嵌套首页'))));
+    return WillPopScope(
+      onWillPop: () async {
+        log('${DateTime.now()} build>>(Page2:47)>>${AppRouter2.canPop(context)}');
+        return false;
+      },
+      child: Scaffold(
+          appBar: AppBar(title: const Text('嵌套的自页面')),
+          body: Center(
+              child: TextButton(
+                  onPressed: () => AppRouter2.pop(context),
+                  child: const Text('返回嵌套首页')))),
+    );
   }
 }
 

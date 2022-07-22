@@ -8,11 +8,13 @@ import 'package:fluroDemo/screen/home_screen.dart';
 import 'package:fluroDemo/screen/login/login_screen.dart';
 import 'package:fluroDemo/screen/setting/setting_external_message.dart';
 import 'package:fluroDemo/screen/setting/setting_message_screen.dart';
+import 'package:fluroDemo/screen/setting/share/share_screen.dart';
 import 'package:fluroDemo/screen/splash/guide_screen.dart';
 import 'package:fluroDemo/screen/splash/splash_screen.dart';
 import 'package:lib_router/app_bundle.dart';
 
 import '../../screen/article/article_screen.dart';
+import '../../screen/setting/stick/stick_screen.dart';
 
 ///
 /// @date: 2022/4/8 15:19
@@ -42,6 +44,10 @@ final Map<String, Handler> pageHandler = {
       Handler(handlerFunc: (context, params) => const ArticleScreen()),
   AppPagePath.settingMessage:
       Handler(handlerFunc: (context, params) => const SettingMessage()),
+  AppPagePath.settingStick:
+      Handler(handlerFunc: (context, params) => const StickyPage()),
+  AppPagePath.share:
+      Handler(handlerFunc: (context, params) => const ShareScreen()),
   AppPagePath.settingMessageExternal:
       Handler(handlerFunc: (context, params) => const SettingExternalMessage()),
 };

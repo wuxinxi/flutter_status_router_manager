@@ -57,6 +57,7 @@ class FHttp {
     String path, {
     Method method = Method.get,
     Map<String, dynamic>? params,
+    Map<String, dynamic>? headers,
     data,
     CancelToken? cancelToken,
     Options? options,
@@ -66,6 +67,7 @@ class FHttp {
     Function(int code, String msg)? onFailed,
   }) async {
     options ??= Options(method: _methodValues[method]);
+    options.headers = headers;
     try {
       Response response;
       response = await _dio.request(path,

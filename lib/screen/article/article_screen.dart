@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:lib_net/core/network_dio.dart';
 
+import 'component/lottie_loading.dart';
+
 ///
 /// @date: 2022/4/13 15:24
 /// @author: Sensi
@@ -80,6 +82,8 @@ class _ArticleScreenState extends State<ArticleScreen> {
         firstRefresh: true,
         //刷新时也可以加载更多
         taskIndependence: true,
+        header: LottieHeader(),
+        footer: LottieFooter(),
         firstRefreshWidget: const Center(
           child: CircularProgressIndicator(),
         ),
