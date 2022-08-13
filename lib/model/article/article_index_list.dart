@@ -7,6 +7,7 @@ import 'package:lib_net/data/base_response.dart';
 /// pageCount : 608
 /// size : 20
 /// total : 12159
+/// //
 
 class ArticleIndexList extends BaseResponse {
   ArticleIndexList({
